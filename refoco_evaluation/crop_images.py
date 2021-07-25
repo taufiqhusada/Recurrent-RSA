@@ -15,7 +15,9 @@ with open('map_idx_to_imgs_id.json') as jsonFile:
     map_idx_to_imgs_id = json.load(jsonFile)
 
 for i in tqdm(range(5000)):
-    label = json.load(os.path.join(labels_folder_path, f'lab_{i}.json'))
+    with open(os.path.join(labels_folder_path, f'lab_{i}.json')) as jsonFile:
+        label = json.load(jsonFile)
+  
     bbox = label.bbox[0]
     im = Image.open(os.path.join(imgs_folder_path, f'{map_idx_to_imgs_id[i]}.jpg'))
     cropped_img = im.crop((bbox[0],bbox[1],bbox[2],bbox[3]))
