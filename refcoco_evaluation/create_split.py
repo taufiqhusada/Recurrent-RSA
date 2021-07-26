@@ -24,5 +24,5 @@ for class_name in dict_list_idx_class:
                     dict_list_distractor[idx] = list_distractor_idx
                     break
 
-with open('dict_list_distractor.json', 'w') as jsonFile:
-    json.dump(dict_list_distractor, jsonFile)                 
+with open('dict_list_distractor.json', 'w', encoding='utf-8') as jsonFile:
+    json.dump(dict_list_distractor, jsonFile, ensure_ascii=False, indent=4)                 
