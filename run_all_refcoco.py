@@ -72,9 +72,16 @@ def process_this_id(id, dict_list_idx_class, map_idx_to_imgs_id, dict_list_distr
 	print("Literal caption:\n",literal_caption)
 	print("Pragmatic caption:\n",pragmatic_caption)
 
-	return literal_caption, pragmatic_caption
+	output_literal_caption = (literal_caption[0][0], str(literal_caption[0][1]))
+	output_pragmatic_caption = (pragmatic_caption[0][0], str(pragmatic_caption[0][1]))
+  
+	return output_literal_caption, output_pragmatic_caption
 
 if __name__=='__main__':	
+	idx_from = int(sys.argv[1])
+	idx_to = int(sys.argv[2])
+	print(idx_from, idx_to)
+
 	with open('refcoco_evaluation/dict_list_idx_class.json') as jsonFile:
 		dict_list_idx_class = json.load(jsonFile)
 	with open('refcoco_evaluation/map_idx_to_imgs_id.json') as jsonFile:
@@ -86,13 +93,13 @@ if __name__=='__main__':
 
 	result_literal_caption = {}
 	result_pragmatic_caption = {}
-	for i in tqdm(range(5000)):
+	for i in tqdm(range(idx_from, idx_to)):
 		literal_caption, pragmatic_caption = process_this_id(i, dict_list_idx_class, map_idx_to_imgs_id, dict_list_distractor, result_crop_folder_path)	
 		result_literal_caption[i] = literal_caption
 		result_pragmatic_caption[i] = pragmatic_caption
 
 	
-	with open('refcoco_evaluation/result_literal_caption.json', 'w') as jsonFile:
+	with open(f'refcoco_evaluation/result_literal_caption_{idx_from}_{idx_to}.json', 'w') as jsonFile:
 		json.dump(result_literal_caption, jsonFile)     
-	with open('refcoco_evaluation/result_pragmatic_caption.json', 'w') as jsonFile:
+	with open(f'refcoco_evaluation/result_pragmatic_caption_{idx_from}_{idx_to}.json', 'w') as jsonFile:
 		json.dump(result_pragmatic_caption, jsonFile)      
