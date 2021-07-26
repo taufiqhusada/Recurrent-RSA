@@ -94,9 +94,13 @@ if __name__=='__main__':
 	result_literal_caption = {}
 	result_pragmatic_caption = {}
 	for i in tqdm(range(idx_from, idx_to)):
-		literal_caption, pragmatic_caption = process_this_id(i, dict_list_idx_class, map_idx_to_imgs_id, dict_list_distractor, result_crop_folder_path)	
-		result_literal_caption[i] = literal_caption
-		result_pragmatic_caption[i] = pragmatic_caption
+ 		try:
+		    literal_caption, pragmatic_caption = process_this_id(i, dict_list_idx_class, map_idx_to_imgs_id, dict_list_distractor, result_crop_folder_path)	
+		    result_literal_caption[i] = literal_caption
+		    result_pragmatic_caption[i] = pragmatic_caption
+ 		except Exception:
+		    result_literal_caption[i] = 'ERROR'
+		    result_pragmatic_caption[i] = 'ERROR'
 
 	
 	with open(f'refcoco_evaluation/result_literal_caption_{idx_from}_{idx_to}.json', 'w') as jsonFile:
