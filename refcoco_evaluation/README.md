@@ -19,5 +19,5 @@ Evaluating Recurrent RSA on refcoco test dataset
 - I only evaluated it on 4984 images on refcoco test dataset (not in all 5000 images), because there is an error when loading some images (somehow some image loaded as a grayscale image whereas the RSA needs an input of RGB image)
 
 ## References
-- `https://github.com/lichengunc/refer`
+- Referring Expressions (REFER) library: `https://github.com/lichengunc/refer`
 
