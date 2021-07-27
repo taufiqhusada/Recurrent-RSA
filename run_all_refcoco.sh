@@ -5,10 +5,10 @@
 #$ -N reuben_rsa_refcoco # Give job a name
 #$ -j y               # Merge the error and output streams into a single file
 #$ -V
-#$ -m
+#$ -m e
 
 python run_all_refcoco.py 0 1000
-python run_all_refcoco.py 0 2000
-python run_all_refcoco.py 0 3000
-python run_all_refcoco.py 0 4000
-python run_all_refcoco.py 0 5000
+python run_all_refcoco.py 1000 2000
+python run_all_refcoco.py 2000 3000
+python run_all_refcoco.py 3000 4000
+python run_all_refcoco.py 4000 5000
