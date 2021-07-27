@@ -1,4 +1,4 @@
-# Evaluation this approach on refcoco dataset
+# Evaluation on refcoco dataset
 Evaluating Recurrent RSA on refcoco test dataset 
 
 ## Generated Expression Result
