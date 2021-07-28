@@ -1,4 +1,4 @@
-# Evaluation this approach on refcoco dataset
+# Evaluation on refcoco dataset
 Evaluating Recurrent RSA on refcoco test dataset 
 
 ## Generated Expression Result
@@ -22,5 +22,5 @@ Evaluating Recurrent RSA on refcoco test dataset
 ![example](example-refcoco.jpg)
 
 ## References
-- `https://github.com/lichengunc/refer`
+- Referring Expressions (REFER) library: `https://github.com/lichengunc/refer`
 
