@@ -25,7 +25,7 @@ def process_this_id(id, dict_list_idx_class, map_idx_to_imgs_id, dict_list_distr
     id = str(id)
     urls = [os.path.join(result_crop_folder_path, f'{map_idx_to_imgs_id[id]}.jpg')]
     for id_distractor in dict_list_distractor[id]:
-        urls.append(os.path.join(result_crop_folder_path, f'{map_idx_to_imgs_id[id]}.jpg'))
+        urls.append(os.path.join(result_crop_folder_path, f'{map_idx_to_imgs_id[str(id_distractor)]}.jpg'))
 
     # urls = [
     #   "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/Arriva_T6_nearside.JPG/1200px-Arriva_T6_nearside.JPG",
