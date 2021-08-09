@@ -2,7 +2,7 @@
 Evaluating Recurrent RSA on refcoco test dataset 
 
 ## Generated Expression Result
-- on the folder [result](result)
+- on the file `recurrentRSA_generated_pragmatic_exps.json`
 
 ## Score
 - bleu-1: 0.168943800017137
