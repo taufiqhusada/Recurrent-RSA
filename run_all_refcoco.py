@@ -21,11 +21,15 @@ import json
 import os
 from tqdm import tqdm
 
-def process_this_id(id, dict_list_idx_class, map_idx_to_imgs_id, dict_list_distractor, result_crop_folder_path):
+CROPPED_IMG_FOLDER = '/scratch2/hle/refCOCO/test/cropped_imgs_RecurrentRSA'
+
+def process_this_id(id):
     id = str(id)
-    urls = [os.path.join(result_crop_folder_path, f'{map_idx_to_imgs_id[id]}.jpg')]
-    for id_distractor in dict_list_distractor[id]:
-        urls.append(os.path.join(result_crop_folder_path, f'{map_idx_to_imgs_id[str(id_distractor)]}.jpg'))
+    urls = [os.path.join(CROPPED_IMG_FOLDER, 'target.jpg')]
+    for i in range(9):
+        distractor_path = os.path.join(CROPPED_IMG_FOLDER, f'distractor_{i}.jpg')
+        if (os.path.exists(distractor_path)):
+            urls.append(distractor_path)
 
     # urls = [
     #   "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/Arriva_T6_nearside.JPG/1200px-Arriva_T6_nearside.JPG",
@@ -82,20 +86,11 @@ if __name__=='__main__':
     idx_to = int(sys.argv[2])
     print(idx_from, idx_to)
 
-    with open('refcoco_evaluation/dict_list_idx_class.json') as jsonFile:
-        dict_list_idx_class = json.load(jsonFile)
-    with open('refcoco_evaluation/map_idx_to_imgs_id.json') as jsonFile:
-        map_idx_to_imgs_id = json.load(jsonFile)
-    with open('refcoco_evaluation/dict_list_distractor.json') as jsonFile:
-        dict_list_distractor = json.loads(jsonFile.read())
-
-    result_crop_folder_path = 'refcoco_evaluation/cropped'
-
     result_literal_caption = {}
     result_pragmatic_caption = {}
     for i in tqdm(range(idx_from, idx_to)):
         try:
-            literal_caption, pragmatic_caption = process_this_id(i, dict_list_idx_class, map_idx_to_imgs_id, dict_list_distractor, result_crop_folder_path) 
+            literal_caption, pragmatic_caption = process_this_id(i) 
             result_literal_caption[i] = literal_caption
             result_pragmatic_caption[i] = pragmatic_caption
         except Exception as e:
