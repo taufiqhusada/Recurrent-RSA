@@ -25,9 +25,10 @@ CROPPED_IMG_FOLDER = '/scratch2/hle/refCOCO/test/cropped_imgs_RecurrentRSA'
 
 def process_this_id(id):
     id = str(id)
-    urls = [os.path.join(CROPPED_IMG_FOLDER, 'target.jpg')]
+    this_id_folder = os.path.join(CROPPED_IMG_FOLDER, id)
+    urls = [os.path.join(this_id_folder, 'target.jpg')]
     for i in range(9):
-        distractor_path = os.path.join(CROPPED_IMG_FOLDER, f'distractor_{i}.jpg')
+        distractor_path = os.path.join(this_id_folder, f'distractor_{i}.jpg')
         if (os.path.exists(distractor_path)):
             urls.append(distractor_path)
 
